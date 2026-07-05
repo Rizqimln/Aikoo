@@ -1,0 +1,574 @@
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>Aikoo Studio • Video Patcher</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&amp;family=Geist+Mono:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="loading-screen hidden" id="loading-screen">
+        <div class="loading-orb loading-orb-1"></div>
+        <div class="loading-orb loading-orb-2"></div>
+        <div class="loading-content">
+            <div class="loading-logo">◈</div>
+            <div class="loading-bar-wrap">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <div class="loading-text">Initializing Video Patcher</div>
+        </div>
+    </div>
+
+    <div class="tg-popup-overlay hidden" id="tg-popup-overlay">
+        <div class="tg-popup-card">
+            <button class="tg-popup-close" id="tg-popup-close" title="Close">✕</button>
+            <div class="tg-popup-icon">✈</div>
+            <div class="tg-popup-title">Join Our Telegram Channels</div>
+            <div class="tg-popup-desc">Join both channels to get daily updates and giveaways!</div>
+            <div class="tg-popup-btns">
+                <a class="tg-popup-join-btn" id="tg-join-btn-1" href="https://t.me/aetherenhance_ch" target="_blank"
+                    rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.48l-2.95-.924c-.64-.203-.654-.64.135-.948l11.514-4.437c.537-.194 1.006.131.383.077z">
+                        </path>
+                    </svg>
+                    Join @aetherenhance_ch
+                </a>
+                <a class="tg-popup-join-btn " id="tg-join-btn-2" href="https://t.me/editing_haven" target="_blank"
+                    rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.48l-2.95-.924c-.64-.203-.654-.64.135-.948l11.514-4.437c.537-.194 1.006.131.383.077z">
+                        </path>
+                    </svg>
+                    Join Editing Haven
+                </a>
+                <a class="tg-popup-join-btn secondary" id="tg-join-btn-1" href="https://t.me/aikoopy" target="_blank"
+                    rel="noopener">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-2.018 9.51c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.48 14.48l-2.95-.924c-.64-.203-.654-.64.135-.948l11.514-4.437c.537-.194 1.006.131.383.077z">
+                        </path>
+                    </svg>
+                    @aikoopy
+                </a>
+            </div>
+            <div class="tg-popup-hint">Join both channels to remove this popup permanently.</div>
+        </div>
+    </div>
+
+    <div class="toast-notification" id="toast-notification"></div>
+
+    <header class="studio-header">
+        <div class="header-left">
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Menu"><svg width="16" height="16"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg></button>
+            <a href="index.html" class="header-logo">
+                <div class="header-logo-mark">◈</div><span class="header-logo-text">Aikoo</span>
+            </a>
+            <nav class="header-nav" id="desktop-nav">
+                <a href="index.html" class="header-nav-item home-link">⌂ Home</a>
+                <a href="patcher.html" class="header-nav-item active">Video Patcher</a>
+                <a href="video-enhancer.html" class="header-nav-item">Video Enhancer</a>
+                <a href="compressor.html" class="header-nav-item">Compressor</a>
+                <a href="video-downloader.html" class="header-nav-item">Video Downloader</a>
+                <a href="repost-manager.html" class="header-nav-item">Repost Manager</a>
+                <a href="auto-captions.html" class="header-nav-item">Auto Captions</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle theme"
+                aria-label="Toggle light/dark mode">
+                <svg id="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: block;">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg id="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <div class="mobile-nav-dropdown" id="mobile-nav-dropdown">
+        <a href="index.html" class="mobile-nav-item home-link">⌂ Home</a>
+        <a href="patcher.html" class="mobile-nav-item active">Video Patcher</a>
+        <a href="video-enhancer.html" class="mobile-nav-item">Video Enhancer</a>
+        <a href="compressor.html" class="mobile-nav-item">Compressor</a>
+        <a href="video-downloader.html" class="mobile-nav-item">Video Downloader</a>
+        <a href="repost-manager.html" class="mobile-nav-item">Repost Manager</a>
+        <a href="auto-captions.html" class="mobile-nav-item">Auto Captions</a>
+    </div>
+
+    <div class="patcher-body">
+        <div class="preview-panel">
+            <div class="quality-warning-banner">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z">
+                    </path>
+                    <line x1="12" y1="9" x2="12" y2="13"></line>
+                    <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                </svg>
+                1080p resolution and 60 FPS is recommended. All codecs supported.
+            </div>
+            <div class="preview-container">
+                <div class="preview-zone" id="preview-zone">
+                    <div id="preview-placeholder">
+                        <div class="preview-upload-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                                <polyline points="17 8 12 3 7 8"></polyline>
+                                <line x1="12" y1="3" x2="12" y2="15"></line>
+                            </svg></div>
+                        <div class="preview-title">Drop your video here</div>
+                        <div class="preview-subtitle">or click to browse files</div>
+                        <button class="preview-select-btn" id="preview-select-btn">Select Video</button>
+                        <div class="preview-formats"><span>MP4</span> · <span>WebM</span> · <span>MOV</span><br>Up to
+                            <span>500 MB</span> · All codecs · 30–60 FPS
+                        </div>
+                    </div>
+                    <div class="video-preview-wrap" id="video-preview-wrap">
+                        <video id="preview-video" src="" muted="" loop="" playsinline=""></video>
+                        <button class="vid-change-btn" id="change-video-btn">Change</button>
+                        <div class="video-controls-bar">
+                            <button class="vid-ctrl-btn" id="play-pause-btn"><svg id="play-icon" width="13" height="13"
+                                    viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M8 5v14l11-7z"></path>
+                                </svg><svg id="pause-icon" width="13" height="13" viewBox="0 0 24 24"
+                                    fill="currentColor" style="display:none">
+                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                                </svg></button>
+                            <button class="vid-ctrl-btn" id="mute-btn"><svg id="unmute-icon" width="13" height="13"
+                                    viewBox="0 0 24 24" fill="currentColor" style="display:block">
+                                    <path
+                                        d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z">
+                                    </path>
+                                </svg><svg id="mute-icon-el" width="13" height="13" viewBox="0 0 24 24"
+                                    fill="currentColor" style="display:none">
+                                    <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
+                                    <line x1="22" y1="8" x2="18" y2="14" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round"></line>
+                                    <line x1="18" y1="8" x2="22" y2="14" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round"></line>
+                                </svg></button>
+                            <button class="vid-ctrl-btn" id="fullscreen-btn"><svg width="13" height="13"
+                                    viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z">
+                                    </path>
+                                </svg></button>
+                        </div>
+                    </div>
+                    <input type="file" id="file-input" accept="video/mp4,video/webm,video/quicktime,video/mov"
+                        hidden="">
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-panel">
+            <div class="settings-section"><label class="settings-label">Video Specifications</label>
+                <table class="status-table">
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color:var(--text-muted)">File Size</td>
+                            <td class="status-val" id="stat-size">—</td>
+                            <td class="status-indicator" id="stat-size-status">—</td>
+                        </tr>
+                        <tr>
+                            <td style="color:var(--text-muted)">Resolution</td>
+                            <td class="status-val" id="stat-res">—</td>
+                            <td class="status-indicator" id="stat-res-status">—</td>
+                        </tr>
+                        <tr>
+                            <td style="color:var(--text-muted)">Codec</td>
+                            <td class="status-val" id="stat-codec">—</td>
+                            <td class="status-indicator" id="stat-codec-status">—</td>
+                        </tr>
+                        <tr>
+                            <td style="color:var(--text-muted)">Frame Rate</td>
+                            <td><span class="status-val" id="stat-fps">—</span>
+                                <div class="fps-note" id="fps-note" style="display:none"></div>
+                            </td>
+                            <td class="status-indicator" id="stat-fps-status">—</td>
+                        </tr>
+                        <tr>
+                            <td style="color:var(--text-muted)">Duration</td>
+                            <td class="status-val" id="stat-dur">—</td>
+                            <td class="status-indicator" id="stat-dur-status">—</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- NOTE BOX -->
+                <div class="specs-note-box">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    <span><strong>Note:</strong> FPS and codec detection may not be accurate. 1080p resolution and 60
+                        FPS is recommended for smooth playback on TikTok. All codecs supported.</span>
+                </div>
+            </div>
+
+            <div class="validation-error" id="validation-error" hidden="">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="validation-error-text"></span>
+            </div>
+
+            <div class="settings-section"><label class="settings-label">Bypass Parameters (Browser-Side)</label>
+                <p style="font-size:9px;color:var(--text-tertiary);margin-bottom:10px;line-height:1.5">Your video is
+                    processed entirely on our severs. Works with all codecs.</p>
+                <div class="param-list">
+                    <div class="param-row"><span class="param-key">canvas_metadata</span><span
+                            class="param-val red">stripped</span></div>
+                    <div class="param-row"><span class="param-key">upload_mode</span><span
+                            class="param-val green">direct</span></div>
+                    <div class="param-row"><span class="param-key">re_encode_flag</span><span
+                            class="param-val red">disabled</span></div>
+                    <div class="param-row"><span class="param-key">quality_preservation</span><span
+                            class="param-val green">enabled</span></div>
+                </div>
+            </div>
+
+            <div class="settings-section branding-section">
+                <div class="branding-box" id="branding-box">
+                    <div class="branding-label"><span>Creator Credit - Add this to your description box when uploading
+                            on TikTok</span><span class="required-badge">REQUIRED</span></div>
+                    <textarea class="branding-textarea" id="branding-textarea" readonly=""
+                        rows="2">High-quality method | TG - @aetherenhance_ch </textarea>
+                    <button class="branding-copy-btn" id="branding-copy-btn" type="button">
+                        <svg id="copy-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path>
+                        </svg>
+                        <svg id="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <span id="copy-btn-text">Copy to Clipboard</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <button class="main-patch-btn" id="main-patch-btn" disabled="">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                        stroke-linecap="round">
+                        <polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polyline>
+                    </svg>
+                    <span id="patch-btn-text">Patch &amp; Download Video</span>
+                </button>
+
+                <div class="inline-progress-wrap" id="inline-progress-wrap">
+                    <div class="inline-progress-track">
+                        <div class="inline-progress-fill" id="inline-progress-fill"></div>
+                    </div>
+                    <div class="inline-progress-info">
+                        <span class="inline-progress-label" id="inline-progress-label">Initializing...</span>
+                        <span class="inline-progress-pct" id="inline-progress-pct">0%</span>
+                    </div>
+                </div>
+                <button class="inline-cancel-btn" id="inline-cancel-btn" type="button">✕ Cancel</button>
+
+                <button class="inline-download-btn" id="inline-download-btn">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+                    </svg>
+                    <span id="download-btn-text">Download Aether-Patcher.mp4</span>
+                </button>
+
+                <div class="cooldown-section" id="cooldown-section">
+                    <span>⏳ Please wait <strong id="cooldown-timer">30</strong>s before next patch</span>
+                </div>
+            </div>
+
+            <div class="post-patch-instructions" id="post-patch-instructions" hidden="">
+                <div class="instructions-icon">✓</div>
+                <div class="instructions-text"><strong>Patch complete.</strong> Upload the downloaded file directly to
+                    TikTok for maximum quality preservation.</div>
+            </div>
+
+            <p class="support-note">If facing any problems? <a href="https://t.me/aikoopy" target="_blank">Contact
+                    Support &amp; Report a Problem</a></p>
+        </div>
+    </div>
+
+    <button class="support-btn" id="support-btn" title="Contact Support">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+            stroke-linecap="round">
+            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+        </svg>
+        Contact Support
+    </button>
+
+    <script>
+        (() => {
+            'use strict';
+            const $ = id => document.getElementById(id);
+
+            // CONFIG
+            const API_BASE = 'https://aether-patcher.onrender.com';
+            const API_KEY = 'aether_patch_secret_key_2026';
+
+            const loadingScreen = $('loading-screen'), toastEl = $('toast-notification'), hamburgerBtn = $('hamburger-btn'), mobileNav = $('mobile-nav-dropdown'), themeBtn = $('theme-toggle-btn'), sunIcon = $('sun-icon'), moonIcon = $('moon-icon'), previewZone = $('preview-zone'), previewPlaceholder = $('preview-placeholder'), videoPreviewWrap = $('video-preview-wrap'), previewVideo = $('preview-video'), previewSelectBtn = $('preview-select-btn'), changeVideoBtn = $('change-video-btn'), playPauseBtn = $('play-pause-btn'), playIcon = $('play-icon'), pauseIcon = $('pause-icon'), muteBtn = $('mute-btn'), unmuteIcon = $('unmute-icon'), muteIconEl = $('mute-icon-el'), fullscreenBtn = $('fullscreen-btn'), fileInput = $('file-input'), statSize = $('stat-size'), statSizeStatus = $('stat-size-status'), statRes = $('stat-res'), statResStatus = $('stat-res-status'), statCodec = $('stat-codec'), statCodecStatus = $('stat-codec-status'), statFps = $('stat-fps'), statFpsStatus = $('stat-fps-status'), fpsNote = $('fps-note'), statDur = $('stat-dur'), statDurStatus = $('stat-dur-status'), validationError = $('validation-error'), validationErrorText = $('validation-error-text'), mainPatchBtn = $('main-patch-btn'), patchBtnText = $('patch-btn-text'), postPatchInstr = $('post-patch-instructions'), brandingBox = $('branding-box'), brandingTextarea = $('branding-textarea'), brandingCopyBtn = $('branding-copy-btn'), copyIcon = $('copy-icon'), checkIcon = $('check-icon'), copyBtnText = $('copy-btn-text'), cooldownSection = $('cooldown-section'), cooldownTimer = $('cooldown-timer'), inlineProgressWrap = $('inline-progress-wrap'), inlineProgressFill = $('inline-progress-fill'), inlineProgressPct = $('inline-progress-pct'), inlineProgressLabel = $('inline-progress-label'), inlineCancelBtn = $('inline-cancel-btn'), inlineDownloadBtn = $('inline-download-btn'), downloadBtnText = $('download-btn-text');
+
+            let selectedFile = null, toastTimeout = null, hasCopiedBranding = !1, patchedBlob = null, patchedFilename = 'Aether-Patcher.mp4', cooldownActive = !1, cooldownInterval = null, cooldownEndTime = null, abortController = null, isProcessing = !1;
+
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => loadingScreen.classList.add('hidden'), 1800);
+                checkPersistentCooldown();
+                fetch(`${API_BASE}/api/health`).then(r => r.json()).then(d => console.log('[AETHER] Backend:', d.status)).catch(() => console.warn('[AETHER] Backend unreachable'));
+            });
+
+            let isDark = localStorage.getItem('aether-theme') === null || localStorage.getItem('aether-theme') === 'dark';
+            function setTheme(dark) {
+                document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+                if (sunIcon) sunIcon.style.display = dark ? 'block' : 'none';
+                if (moonIcon) moonIcon.style.display = dark ? 'none' : 'block';
+                localStorage.setItem('aether-theme', dark ? 'dark' : 'light');
+            }
+            if (themeBtn) themeBtn.addEventListener('click', () => { isDark = !isDark; setTheme(isDark); });
+            setTheme(isDark);
+
+            hamburgerBtn.addEventListener('click', () => mobileNav.classList.toggle('open'));
+            document.addEventListener('click', e => { if (!hamburgerBtn.contains(e.target) && !mobileNav.contains(e.target)) mobileNav.classList.remove('open') });
+
+            function showToast(msg, duration = 3000) { toastEl.textContent = msg; toastEl.classList.add('show'); clearTimeout(toastTimeout); toastTimeout = setTimeout(() => toastEl.classList.remove('show'), duration); }
+
+            function checkPersistentCooldown() {
+                const se = localStorage.getItem('ae-cooldown-end');
+                if (se) { const et = parseInt(se), r = Math.ceil((et - Date.now()) / 1000); if (r > 0) { cooldownEndTime = et; startCooldownFrom(r); } else localStorage.removeItem('ae-cooldown-end'); }
+            }
+            function startCooldown(seconds = 30) {
+                const et = Date.now() + seconds * 1000; localStorage.setItem('ae-cooldown-end', et.toString()); cooldownEndTime = et; cooldownActive = !0;
+                cooldownSection.classList.add('show'); cooldownTimer.textContent = seconds; mainPatchBtn.disabled = !0;
+                mainPatchBtn.classList.remove('unlocked'); patchBtnText.textContent = 'Patch & Download Video';
+                if (cooldownInterval) clearInterval(cooldownInterval);
+                cooldownInterval = setInterval(() => { const r = Math.ceil((cooldownEndTime - Date.now()) / 1000); if (r <= 0) clearCooldown(); else cooldownTimer.textContent = r; }, 1000);
+            }
+            function startCooldownFrom(remaining) { cooldownActive = !0; cooldownSection.classList.add('show'); cooldownTimer.textContent = remaining; mainPatchBtn.disabled = !0; mainPatchBtn.classList.remove('unlocked'); patchBtnText.textContent = 'Patch & Download Video'; if (cooldownInterval) clearInterval(cooldownInterval); cooldownInterval = setInterval(() => { const r = Math.ceil((cooldownEndTime - Date.now()) / 1000); if (r <= 0) clearCooldown(); else cooldownTimer.textContent = r; }, 1000); }
+            function clearCooldown() { if (cooldownInterval) clearInterval(cooldownInterval); cooldownActive = !1; cooldownEndTime = null; localStorage.removeItem('ae-cooldown-end'); cooldownSection.classList.remove('show'); updateDownloadButtonState(); }
+            function resetBranding() { hasCopiedBranding = !1; brandingCopyBtn.classList.remove('copied'); brandingBox.classList.remove('copied'); copyIcon.style.display = 'block'; checkIcon.style.display = 'none'; copyBtnText.textContent = 'Copy to Clipboard'; brandingCopyBtn.style.pointerEvents = 'auto'; }
+            function resetDownloadState() { patchedBlob = null; patchedFilename = 'Aether-Patcher.mp4'; postPatchInstr.hidden = !0; validationError.hidden = !0; inlineDownloadBtn.classList.remove('active'); mainPatchBtn.style.display = 'flex'; updateDownloadButtonState(); }
+
+            brandingCopyBtn.addEventListener('click', async () => {
+                try { await navigator.clipboard.writeText(brandingTextarea.value); hasCopiedBranding = !0; brandingCopyBtn.classList.add('copied'); copyIcon.style.display = 'none'; checkIcon.style.display = 'block'; copyBtnText.textContent = 'Copied! Patch Unlocked'; brandingBox.classList.add('copied'); updateDownloadButtonState(); showToast('✓ Caption copied! Patch unlocked', 2500); brandingCopyBtn.style.pointerEvents = 'none'; }
+                catch (err) { brandingTextarea.select(); brandingTextarea.setSelectionRange(0, 99999); try { document.execCommand('copy'); hasCopiedBranding = !0; brandingCopyBtn.classList.add('copied'); copyIcon.style.display = 'none'; checkIcon.style.display = 'block'; copyBtnText.textContent = 'Copied! Patch Unlocked'; brandingBox.classList.add('copied'); updateDownloadButtonState(); showToast('✓ Caption copied! Patch unlocked', 2500); brandingCopyBtn.style.pointerEvents = 'none'; } catch (fb) { showToast('⚠ Please manually copy the text', 3000); } }
+            });
+
+            function updateDownloadButtonState() {
+                if (cooldownActive) { mainPatchBtn.disabled = !0; mainPatchBtn.classList.remove('unlocked'); patchBtnText.textContent = 'Patch & Download Video'; return; }
+                if (selectedFile && hasCopiedBranding) { mainPatchBtn.disabled = !1; mainPatchBtn.classList.add('unlocked'); patchBtnText.textContent = 'Patch & Download Video'; }
+                else if (selectedFile && !hasCopiedBranding) { mainPatchBtn.disabled = !0; mainPatchBtn.classList.remove('unlocked'); patchBtnText.textContent = 'Copy credit first to unlock'; }
+                else { mainPatchBtn.disabled = !0; mainPatchBtn.classList.remove('unlocked'); patchBtnText.textContent = 'Patch & Download Video'; }
+            }
+
+            // ── File handling ──
+            previewZone.addEventListener('dragover', e => { e.preventDefault(); previewZone.style.borderColor = 'var(--tt-red)'; });
+            previewZone.addEventListener('dragleave', () => { previewZone.style.borderColor = videoPreviewWrap.classList.contains('active') ? 'var(--border-light)' : 'var(--border)'; });
+            previewZone.addEventListener('drop', e => { e.preventDefault(); previewZone.style.borderColor = videoPreviewWrap.classList.contains('active') ? 'var(--border-light)' : 'var(--border)'; const f = e.dataTransfer.files[0]; if (f && f.type.startsWith('video/')) loadFile(f); else showToast('Please drop a video file.'); });
+            previewZone.addEventListener('click', e => { if (!videoPreviewWrap.classList.contains('active')) fileInput.click(); });
+            previewSelectBtn.addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+            changeVideoBtn.addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+            fileInput.addEventListener('change', e => { const f = e.target.files && e.target.files[0]; if (f) loadFile(f); fileInput.value = ''; });
+
+            playPauseBtn.addEventListener('click', e => { e.stopPropagation(); previewVideo.paused ? previewVideo.play() : previewVideo.pause(); });
+            previewVideo.addEventListener('play', () => { playIcon.style.display = 'none'; pauseIcon.style.display = ''; });
+            previewVideo.addEventListener('pause', () => { playIcon.style.display = ''; pauseIcon.style.display = 'none'; });
+            muteBtn.addEventListener('click', e => { e.stopPropagation(); previewVideo.muted = !previewVideo.muted; unmuteIcon.style.display = previewVideo.muted ? 'none' : ''; muteIconEl.style.display = previewVideo.muted ? '' : 'none'; });
+            fullscreenBtn.addEventListener('click', e => { e.stopPropagation(); if (previewVideo.requestFullscreen) previewVideo.requestFullscreen(); });
+
+            function fmtBytes(n) { const u = ['B', 'KB', 'MB', 'GB']; let i = 0, v = n; while (v >= 1024 && i < u.length - 1) { v /= 1024; i++; } return `${v.toFixed(i ? 2 : 0)} ${u[i]}`; }
+            function fmtDur(s) { const m = Math.floor(s / 60), sec = Math.floor(s % 60); return `${m}:${String(sec).padStart(2, '0')}`; }
+            function setIndicator(el, label, state) { el.textContent = label; el.className = 'status-indicator' + (state ? ' ' + state : ''); }
+
+            function loadFile(file) {
+                selectedFile = file;
+                const originalName = file.name.replace(/\.[^/.]+$/, '');
+                patchedFilename = originalName + ' - Aether-Patcher.mp4';
+                resetBranding(); resetDownloadState();
+                const sizeMB = file.size / (1024 * 1024);
+                if (sizeMB > 500) { statSize.textContent = fmtBytes(file.size); setIndicator(statSizeStatus, 'TOO LARGE', 'red'); validationErrorText.textContent = 'File too large. Maximum allowed size: 500 MB.'; validationError.hidden = !1; showToast('⚠ File too large. Max 500 MB.', 4000); selectedFile = null; return; }
+                statSize.textContent = fmtBytes(file.size); setIndicator(statSizeStatus, 'OK', 'green');
+                statRes.textContent = '—'; setIndicator(statResStatus, '—', '');
+                statCodec.textContent = '…'; setIndicator(statCodecStatus, 'Reading', 'amber');
+                statFps.textContent = '…'; setIndicator(statFpsStatus, 'Reading', 'amber'); fpsNote.style.display = 'none'; statDur.textContent = '—'; setIndicator(statDurStatus, '—', '');
+                const url = URL.createObjectURL(file); previewVideo.src = url; previewVideo.load(); previewPlaceholder.style.display = 'none'; videoPreviewWrap.classList.add('active'); previewZone.classList.add('has-video'); previewVideo.play().catch(() => { });
+                previewVideo.onloadedmetadata = () => {
+                    const w = previewVideo.videoWidth, h = previewVideo.videoHeight;
+                    statRes.textContent = `${w} × ${h}`;
+                    setIndicator(statResStatus, (Math.min(w, h) >= 720) ? 'OK' : 'Check', (Math.min(w, h) >= 720) ? 'green' : 'amber');
+                    const dur = previewVideo.duration;
+                    statDur.textContent = isFinite(dur) ? fmtDur(dur) : '—';
+                    setIndicator(statDurStatus, isFinite(dur) ? 'OK' : '—', isFinite(dur) ? 'green' : '');
+                    const codec = file.type.includes('mp4') ? 'H.264 (AVC)' : file.type.includes('quicktime') ? 'H.264 (AVC)' : file.type.includes('webm') ? 'VP9' : file.type.split('/')[1]?.toUpperCase() || 'Unknown';
+                    statCodec.textContent = codec;
+                    setIndicator(statCodecStatus, '✓ Optimal', 'green');
+                    statFps.textContent = '—';
+                    fpsNote.textContent = 'Server-side patching';
+                    fpsNote.style.display = 'block'; fpsNote.style.color = 'var(--text-muted)';
+                    setIndicator(statFpsStatus, 'OK', 'green');
+                };
+                showToast(`${file.name} loaded — ready to patch.`);
+            }
+
+            function showInlineProgress() { inlineProgressWrap.classList.add('active'); inlineCancelBtn.classList.add('active'); inlineDownloadBtn.classList.remove('active'); mainPatchBtn.style.display = 'none'; cooldownSection.classList.remove('show'); isProcessing = !0; inlineProgressFill.style.width = '0%'; inlineProgressPct.textContent = '0%'; inlineProgressLabel.textContent = 'Uploading to server...'; }
+            function updateInlineProgress(pct, label) { inlineProgressFill.style.width = pct + '%'; inlineProgressPct.textContent = Math.round(pct) + '%'; if (label) inlineProgressLabel.textContent = label; }
+            function hideInlineProgress() { inlineProgressWrap.classList.remove('active'); inlineCancelBtn.classList.remove('active'); isProcessing = !1; mainPatchBtn.style.display = 'flex'; updateDownloadButtonState(); }
+            function showDownloadButton() { inlineProgressWrap.classList.remove('active'); inlineCancelBtn.classList.remove('active'); inlineDownloadBtn.classList.add('active'); downloadBtnText.textContent = 'Download ' + patchedFilename; isProcessing = !1; }
+
+            inlineCancelBtn.addEventListener('click', () => { if (abortController) { abortController.abort(); abortController = null; } hideInlineProgress(); showToast('✕ Process cancelled', 2000); });
+
+            inlineDownloadBtn.addEventListener('click', () => {
+                if (!patchedBlob) return showToast('⚠ No patched file found');
+                const url = URL.createObjectURL(patchedBlob), a = document.createElement('a');
+                a.href = url; a.download = patchedFilename; document.body.appendChild(a); a.click(); a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+                postPatchInstr.hidden = !1; showToast(`✓ Downloaded: ${patchedFilename}`, 2500);
+                startCooldown(30);
+            });
+
+            // ── SERVER-SIDE PATCH ──
+            mainPatchBtn.addEventListener('click', async () => {
+                if (!selectedFile) return showToast('⚠ Please select a video file first');
+                if (!hasCopiedBranding) return showToast('⚠ Please copy the creator credit first');
+                if (cooldownActive) return showToast('⚠ Please wait for cooldown', 2000);
+                if (isProcessing) return;
+
+                showInlineProgress();
+                abortController = new AbortController();
+
+                try {
+                    updateInlineProgress(10, 'Uploading video...');
+
+                    const formData = new FormData();
+                    formData.append('video', selectedFile, selectedFile.name);
+
+                    const xhr = new XMLHttpRequest();
+
+                    const uploadPromise = new Promise((resolve, reject) => {
+                        xhr.upload.addEventListener('progress', (e) => {
+                            if (e.lengthComputable) {
+                                const pct = 10 + (e.loaded / e.total) * 40;
+                                updateInlineProgress(pct, 'Uploading...');
+                            }
+                        });
+
+                        xhr.addEventListener('load', () => {
+                            if (xhr.status >= 200 && xhr.status < 300) {
+                                resolve(xhr.response);
+                            } else {
+                                try {
+                                    const err = JSON.parse(new TextDecoder().decode(xhr.response));
+                                    reject(new Error(err.error || `Server error ${xhr.status}`));
+                                } catch {
+                                    reject(new Error(`Server error ${xhr.status}`));
+                                }
+                            }
+                        });
+
+                        xhr.addEventListener('error', () => reject(new Error('Network error. Check your connection.')));
+                        xhr.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')));
+                    });
+
+                    xhr.open('POST', `${API_BASE}/api/patch`);
+                    xhr.setRequestHeader('X-API-Key', API_KEY);
+                    xhr.responseType = 'arraybuffer';
+                    xhr.send(formData);
+
+                    abortController.signal.addEventListener('abort', () => xhr.abort());
+
+                    updateInlineProgress(50, 'Processing on server...');
+                    const patchedBytes = await uploadPromise;
+
+                    updateInlineProgress(90, 'Finalizing...');
+                    await new Promise(r => setTimeout(r, 300));
+
+                    const mimeType = selectedFile.type || 'video/mp4';
+                    patchedBlob = new Blob([patchedBytes], { type: mimeType });
+
+                    updateInlineProgress(100, 'Complete!');
+                    await new Promise(r => setTimeout(r, 200));
+
+                    showDownloadButton();
+                    postPatchInstr.hidden = false;
+                    showToast('✓ Patch complete!', 2500);
+
+                } catch (err) {
+                    if (err.name === 'AbortError') return;
+                    hideInlineProgress();
+                    validationErrorText.textContent = err?.message || 'Patching failed.';
+                    validationError.hidden = false;
+                    showToast('⚠ Patch failed', 4000);
+                } finally {
+                    abortController = null;
+                }
+            });
+
+            // ── Telegram popup ──
+            (function () {
+                const overlay = $('tg-popup-overlay'), closeBtn = $('tg-popup-close'), btn1 = $('tg-join-btn-1'), btn2 = $('tg-join-btn-2'), j1 = localStorage.getItem('ae-tg-joined-1'), j2 = localStorage.getItem('ae-tg-joined-2');
+                if (j1 && j2) return; if (j1) btn1.classList.add('faded'); if (j2) btn2.classList.add('faded');
+                function open() { overlay.classList.remove('hidden'); }
+                function close() { overlay.classList.add('hidden'); }
+                setTimeout(() => open(), 2200); closeBtn.addEventListener('click', () => close());
+                btn1.addEventListener('click', () => { localStorage.setItem('ae-tg-joined-1', '1'); btn1.classList.add('faded'); if (localStorage.getItem('ae-tg-joined-2')) close(); });
+                btn2.addEventListener('click', () => { localStorage.setItem('ae-tg-joined-2', '1'); btn2.classList.add('faded'); if (localStorage.getItem('ae-tg-joined-1')) close(); });
+                window.addEventListener('focus', () => { if (localStorage.getItem('ae-tg-joined-1') && localStorage.getItem('ae-tg-joined-2')) close(); });
+            })();
+
+            // ── Draggable support button ──
+            (function () {
+                const btn = $('support-btn'); let d = !1, sx, sy, or, ob, m = !1;
+                function gp() { const r = btn.getBoundingClientRect(); return { right: window.innerWidth - r.right, bottom: window.innerHeight - r.bottom }; }
+                function dn(e) { const pt = e.touches ? e.touches[0] : e; d = !0; m = !1; sx = pt.clientX; sy = pt.clientY; const p = gp(); or = p.right; ob = p.bottom; btn.style.transition = 'none'; e.preventDefault(); }
+                function mv(e) { if (!d) return; const pt = e.touches ? e.touches[0] : e, dx = pt.clientX - sx, dy = pt.clientY - sy; if (Math.abs(dx) > 3 || Math.abs(dy) > 3) m = !0; const nr = Math.max(8, Math.min(window.innerWidth - btn.offsetWidth - 8, or - dx)), nb = Math.max(8, Math.min(window.innerHeight - btn.offsetHeight - 8, ob - dy)); btn.style.right = nr + 'px'; btn.style.bottom = nb + 'px'; e.preventDefault(); }
+                function up(e) { if (!d) return; d = !1; btn.style.transition = ''; if (!m) window.open('https://t.me/aetherenhance_support', '_blank'); }
+                btn.addEventListener('mousedown', dn); btn.addEventListener('touchstart', dn, { passive: !1 }); window.addEventListener('mousemove', mv); window.addEventListener('touchmove', mv, { passive: !1 }); window.addEventListener('mouseup', up); window.addEventListener('touchend', up);
+            })();
+        })();
+    </script>
+
+
+</body>
+
+</html>
